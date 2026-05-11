@@ -28,18 +28,26 @@
           <div>
             <p class="kicker">Quản trị nội dung</p>
             <h1>Chỉnh sửa toàn bộ website</h1>
-            <p>Sửa nội dung trong khung JSON bên dưới rồi bấm lưu. Giữ đúng dấu ngoặc và dấu phẩy để dữ liệu hợp lệ.</p>
+            <p>Sửa từng ô nội dung bên dưới rồi bấm lưu. Website sẽ cập nhật ngay sau khi tải lại trang.</p>
           </div>
           <a class="btn btn-outline" href="/" target="_blank" rel="noreferrer">Xem website</a>
         </div>
 
         <div class="admin-actions">
           <button class="btn btn-primary" id="saveContent" type="button">Lưu thay đổi</button>
-          <button class="btn btn-outline" id="formatContent" type="button">Căn lại JSON</button>
+          <button class="btn btn-outline" id="reloadContent" type="button">Tải lại</button>
           <button class="btn btn-outline" id="logout" type="button">Đăng xuất</button>
         </div>
 
-        <textarea id="contentEditor" spellcheck="false"></textarea>
+        <form class="content-form" id="contentForm"></form>
+
+        <details class="advanced-json">
+          <summary>JSON nâng cao</summary>
+          <p>Chỉ dùng phần này khi cần sửa cấu trúc đặc biệt.</p>
+          <textarea id="contentEditor" spellcheck="false"></textarea>
+          <button class="btn btn-outline" id="applyJson" type="button">Áp dụng JSON vào form</button>
+        </details>
+
         <p class="admin-status" id="editorStatus"></p>
       </section>
     </main>
