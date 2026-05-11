@@ -1,0 +1,12 @@
+{
+  "name": "trai-cay-001-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Cong ty TNHH Trai Cay 001",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
