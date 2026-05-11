@@ -1,0 +1,125 @@
+.admin-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(245, 178, 53, 0.16), transparent 34rem),
+    linear-gradient(135deg, #f6fbef 0%, #eef8e9 42%, #ffffff 100%);
+  color: var(--ink);
+}
+
+.admin-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+}
+
+.admin-panel {
+  width: min(1080px, 100%);
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(15, 92, 49, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 24px 70px rgba(19, 73, 43, 0.14);
+}
+
+.admin-panel[hidden] {
+  display: none;
+}
+
+.admin-panel h1 {
+  margin: 8px 0 12px;
+  color: var(--green);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.admin-panel p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.admin-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.admin-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
+.admin-form input,
+#contentEditor {
+  width: 100%;
+  border: 1px solid rgba(15, 92, 49, 0.18);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  outline: none;
+}
+
+.admin-form input {
+  min-height: 52px;
+  padding: 0 16px;
+}
+
+.admin-form input:focus,
+#contentEditor:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(10, 134, 65, 0.12);
+}
+
+.admin-editor {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#contentEditor {
+  min-height: 62vh;
+  padding: 18px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.admin-status {
+  min-height: 26px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.admin-status.is-error {
+  color: #b42318;
+}
+
+.admin-status.is-ok {
+  color: var(--green);
+}
+
+@media (max-width: 720px) {
+  .admin-heading {
+    display: grid;
+  }
+
+  #contentEditor {
+    min-height: 58vh;
+    font-size: 12px;
+  }
+}

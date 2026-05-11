@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin | Trái Cây 001</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <section class="admin-panel" id="loginPanel">
+        <p class="kicker">Trái Cây 001</p>
+        <h1>Đăng nhập quản trị</h1>
+        <p>Nhập mật khẩu để chỉnh sửa nội dung hiển thị trên website.</p>
+        <form id="loginForm" class="admin-form">
+          <label>
+            Mật khẩu
+            <input id="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="btn btn-primary" type="submit">Đăng nhập</button>
+        </form>
+        <p class="admin-status" id="loginStatus"></p>
+      </section>
+
+      <section class="admin-panel admin-editor" id="editorPanel" hidden>
+        <div class="admin-heading">
+          <div>
+            <p class="kicker">Quản trị nội dung</p>
+            <h1>Chỉnh sửa toàn bộ website</h1>
+            <p>Sửa nội dung trong khung JSON bên dưới rồi bấm lưu. Giữ đúng dấu ngoặc và dấu phẩy để dữ liệu hợp lệ.</p>
+          </div>
+          <a class="btn btn-outline" href="/" target="_blank" rel="noreferrer">Xem website</a>
+        </div>
+
+        <div class="admin-actions">
+          <button class="btn btn-primary" id="saveContent" type="button">Lưu thay đổi</button>
+          <button class="btn btn-outline" id="formatContent" type="button">Căn lại JSON</button>
+          <button class="btn btn-outline" id="logout" type="button">Đăng xuất</button>
+        </div>
+
+        <textarea id="contentEditor" spellcheck="false"></textarea>
+        <p class="admin-status" id="editorStatus"></p>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

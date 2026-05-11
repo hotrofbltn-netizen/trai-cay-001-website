@@ -1,0 +1,110 @@
+{
+  "site": {
+    "company": "Công ty TNHH Trái Cây 001",
+    "brand": "TRÁI CÂY 001",
+    "tagline": "Nông sản Việt Nam",
+    "footerTagline": "Sầu riêng tươi & nông sản",
+    "email": "congtytraicay001@gmail.com",
+    "phone": "(+84) 34.3979.001",
+    "phoneRaw": "+84343979001",
+    "hotline": "034.3979.001",
+    "address": "Ấp 3, Xã Thanh Hưng, Tỉnh Đồng Tháp, Việt Nam"
+  },
+  "hero": {
+    "kicker": "Sầu riêng tươi & nông sản xuất khẩu",
+    "title": "Nâng cao giá trị nông sản Việt",
+    "body": "Từ những vườn sầu riêng tại miền Tây và Tây Nguyên Việt Nam, Công ty Trái Cây 001 được hình thành với mong muốn xây dựng chuỗi cung ứng minh bạch, bền vững và chuyên nghiệp cho thị trường quốc tế.",
+    "trust": ["ATTP", "Truy xuất nguồn gốc", "Xuất khẩu chính ngạch"],
+    "badgeValue": 50000,
+    "badgeSuffix": " m²",
+    "badgeLabel": "Kho bãi & nhà xưởng"
+  },
+  "stats": [
+    { "value": 5, "suffix": "", "label": "Nhà xưởng hiện đại" },
+    { "value": 50000, "suffix": " m²", "label": "Diện tích kho bãi" },
+    { "value": 4390, "suffix": " tỷ", "label": "Doanh thu 2025" },
+    { "value": 27, "suffix": "%+", "label": "Độ đường sản phẩm" },
+    { "value": 150, "suffix": " tấn", "label": "Hỗ trợ cộng đồng" }
+  ],
+  "partners": ["Vùng nguyên liệu ĐBSCL", "Tây Nguyên", "Đóng gói xuất khẩu", "Kiểm dịch thực vật", "Đối tác Trung Quốc"],
+  "about": {
+    "cardTitle": "Chuỗi cung ứng",
+    "cardText": "Từ vườn trồng đến đóng gói, lưu trữ và xuất khẩu.",
+    "kicker": "Câu chuyện thương hiệu",
+    "title": "Chuỗi cung ứng minh bạch cho sầu riêng Việt Nam",
+    "body": "Từ những vườn sầu riêng tại miền Tây và Tây Nguyên Việt Nam, Công ty Trái Cây 001 được hình thành với mong muốn xây dựng chuỗi cung ứng minh bạch, bền vững và chuyên nghiệp cho thị trường quốc tế.",
+    "checks": ["Thu mua trực tiếp tại vườn", "Dây chuyền đóng gói hiện đại", "Đảm bảo truy xuất nguồn gốc", "Phục vụ thị trường xuất khẩu"]
+  },
+  "values": {
+    "kicker": "Giá trị cốt lõi",
+    "title": "Chất lượng tạo ra giá trị",
+    "items": [
+      { "icon": "01", "title": "Uy tín & chất lượng", "text": "Sản xuất cẩn trọng, có trách nhiệm và giữ tiêu chuẩn ổn định trong từng lô hàng." },
+      { "icon": "02", "title": "Hợp tác & sẻ chia", "text": "Gắn kết với khách hàng, đối tác và nông dân trên nền tảng minh bạch, tin cậy." },
+      { "icon": "03", "title": "Hoàn thiện & phát triển", "text": "Liên tục lắng nghe, đổi mới quy trình và nâng cao năng lực vận hành." },
+      { "icon": "04", "title": "Nông sản bền vững", "text": "Kiến tạo chuỗi giá trị từ vườn đến bàn ăn, đưa giá trị Việt Nam ra thế giới." }
+    ]
+  },
+  "products": {
+    "kicker": "Sản phẩm",
+    "title": "Sản phẩm chủ lực",
+    "items": [
+      { "image": "assets/profile-page-11.jpg", "alt": "Sầu riêng Ri6", "category": "Sản phẩm sầu riêng", "title": "Sầu riêng Ri6 tươi", "text": "1.8 kg - 5 kg, độ đường từ 27%, mùa vụ quanh năm." },
+      { "image": "assets/profile-page-12.jpg", "alt": "Sầu riêng Monthong", "category": "Sản phẩm sầu riêng", "title": "Sầu riêng Monthong", "text": "Cơm vàng béo ngậy, nguồn gốc từ vùng trồng chất lượng cao." },
+      { "image": "assets/profile-page-01.jpg", "alt": "Sầu riêng Musaking", "category": "Sầu riêng cao cấp", "title": "Sầu riêng Musaking", "text": "Quy cách phân loại: A từ 1kg6 - 3kg5, B từ 1kg4 - 4kg." },
+      { "image": "assets/profile-page-02.jpg", "alt": "Sầu riêng Blackthorn", "category": "Sầu riêng cao cấp", "title": "Sầu riêng Blackthorn", "text": "Quy cách phân loại: A từ 1kg6 - 3kg5, B từ 1kg4 - 4kg." },
+      { "image": "assets/profile-page-03.jpg", "alt": "Sầu riêng Chuồng Bò", "category": "Sầu riêng Việt Nam", "title": "Sầu riêng Chuồng Bò", "text": "Quy cách phân loại: A từ 1kg6 - 3kg5, B từ 1kg4 - 4kg." },
+      { "image": "assets/profile-page-08.jpg", "alt": "Kho bãi sơ chế đóng gói", "category": "Dịch vụ nông sản", "title": "Sơ chế - đóng gói", "text": "Hệ thống nhà xưởng đáp ứng nhu cầu sơ chế và đóng gói quy mô lớn." },
+      { "image": "assets/profile-page-09.jpg", "alt": "Thị trường xuất khẩu Trung Quốc", "category": "Xuất khẩu", "title": "Phân phối chính ngạch", "text": "Mạng lưới đối tác nhập khẩu, siêu thị và chợ đầu mối tại Trung Quốc." }
+    ]
+  },
+  "factory": {
+    "kicker": "Nhà máy & kho bãi",
+    "title": "Sản phẩm đạt tiêu chuẩn xuất khẩu",
+    "body": "Hệ thống kho bãi và nhà xưởng đặt tại Tiền Giang, Đồng Nai Long Khánh và Đắk Lắk, phục vụ sơ chế, đóng gói, cấp đông và lưu trữ với trang thiết bị hiện đại.",
+    "items": [
+      { "title": "50.000 m²", "text": "Tổng diện tích khai thác" },
+      { "title": "5 nhà xưởng", "text": "Đáp ứng quy mô lớn" },
+      { "title": "ATTP", "text": "Quy trình an toàn thực phẩm" }
+    ]
+  },
+  "process": {
+    "kicker": "Quy trình vận hành",
+    "title": "Từ vùng trồng đến thị trường xuất khẩu",
+    "items": [
+      { "step": "01", "title": "Thu mua tại vườn", "text": "Lựa chọn sầu riêng từ vùng nguyên liệu đạt yêu cầu chất lượng." },
+      { "step": "02", "title": "Sơ chế & phân loại", "text": "Kiểm tra kích thước, độ chín, ngoại quan và nguồn gốc từng lô." },
+      { "step": "03", "title": "Đóng gói", "text": "Đóng gói theo tiêu chuẩn an toàn thực phẩm và yêu cầu đối tác." },
+      { "step": "04", "title": "Xuất khẩu", "text": "Phân phối chính ngạch đến các thị trường và hệ thống khách hàng." }
+    ]
+  },
+  "market": {
+    "kicker": "Hợp tác & phân phối",
+    "title": "Thị trường xuất khẩu rộng khắp",
+    "items": [
+      { "title": "Tập đoàn nhập khẩu", "text": "Các doanh nghiệp nông sản lớn tại Trung Quốc với năng lực tiêu thụ mạnh." },
+      { "title": "Chuỗi siêu thị bán lẻ", "text": "Đưa sản phẩm sầu riêng Việt Nam đến người tiêu dùng cuối cùng." },
+      { "title": "Thương nhân chợ đầu mối", "text": "Kết nối nhanh với các thị trường truyền thống và điểm phân phối lớn." }
+    ]
+  },
+  "news": {
+    "kicker": "Tin tức & hoạt động",
+    "title": "Dấu ấn phát triển",
+    "linkText": "Liên hệ hợp tác",
+    "items": [
+      { "image": "assets/profile-page-20.jpg", "alt": "Đóng góp cộng đồng", "category": "Trách nhiệm xã hội", "title": "Đồng hành cùng cộng đồng trong những thời điểm khó khăn", "text": "Trái Cây 001 xem trách nhiệm xã hội là một phần trong phát triển bền vững." },
+      { "image": "assets/profile-page-24.jpg", "alt": "150 tấn nhu yếu phẩm vùng lũ", "category": "Hoạt động cộng đồng", "title": "150 tấn nhu yếu phẩm hỗ trợ bà con vùng lũ miền Trung", "text": "Điều động đoàn xe tải vận chuyển nhu yếu phẩm đến các khu vực cần hỗ trợ." },
+      { "image": "assets/profile-page-27.jpg", "alt": "Liên hệ Trái Cây 001", "category": "Đối tác", "title": "Sẵn sàng chào đón đối tác mới trong chuỗi nông sản", "text": "Cùng đưa nông sản Việt Nam tiến xa hơn tại các thị trường trọng điểm." }
+    ]
+  },
+  "consult": {
+    "kicker": "Nhận tư vấn",
+    "title": "Cần nguồn sầu riêng tươi ổn định?",
+    "body": "Liên hệ Trái Cây 001 để trao đổi nhu cầu thu mua, đóng gói và xuất khẩu.",
+    "button": "Gọi ngay 034.3979.001"
+  },
+  "footer": {
+    "description": "Doanh nghiệp cung cấp nông sản sạch, rõ nguồn gốc, góp phần xây dựng chuỗi giá trị nông nghiệp Việt Nam bền vững.",
+    "products": ["Sầu riêng Ri6", "Sầu riêng Monthong", "Sầu riêng Musaking", "Sầu riêng Blackthorn", "Sầu riêng Chuồng Bò", "Sơ chế - đóng gói", "Xuất khẩu chính ngạch"]
+  }
+}
