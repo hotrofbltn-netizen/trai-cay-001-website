@@ -6,13 +6,15 @@ const loginStatus = document.querySelector("#loginStatus");
 const contentForm = document.querySelector("#contentForm");
 const editor = document.querySelector("#contentEditor");
 const editorStatus = document.querySelector("#editorStatus");
-const saveButton = document.querySelector("#saveContent");
+const autosaveState = document.querySelector("#autosaveState");
 const reloadButton = document.querySelector("#reloadContent");
 const applyJsonButton = document.querySelector("#applyJson");
 const logoutButton = document.querySelector("#logout");
 
 const tokenKey = "trai-cay-001-admin-token";
 let currentContent = {};
+let saveTimer;
+let isSaving = false;
 
 const sections = [
   {
@@ -175,6 +177,13 @@ const setStatus = (element, message, type = "") => {
   element.classList.toggle("is-ok", type === "ok");
 };
 
+const setAutosave = (message, type = "") => {
+  autosaveState.textContent = message;
+  autosaveState.classList.toggle("is-saving", type === "saving");
+  autosaveState.classList.toggle("is-error", type === "error");
+  autosaveState.classList.toggle("is-ok", type === "ok");
+};
+
 const escapeHtml = (value) =>
   String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -275,6 +284,48 @@ const syncFormToContent = () => {
   editor.value = JSON.stringify(currentContent, null, 2);
 };
 
+const saveContent = async ({ rerender = false } = {}) => {
+  if (isSaving) return;
+
+  isSaving = true;
+  setAutosave("Đang lưu...", "saving");
+  setStatus(editorStatus, "Đang lưu...");
+
+  try {
+    syncFormToContent();
+    const token = localStorage.getItem(tokenKey);
+    const response = await fetch("/api/content", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(currentContent)
+    });
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.error || "Không lưu được nội dung.");
+    }
+
+    if (rerender) renderForm();
+    setAutosave("Đã tự lưu", "ok");
+    setStatus(editorStatus, "Đã tự lưu. Tải lại website để xem nội dung mới.", "ok");
+  } catch (error) {
+    setAutosave("Lưu lỗi", "error");
+    setStatus(editorStatus, `Lỗi: ${error.message}`, "error");
+  } finally {
+    isSaving = false;
+  }
+};
+
+const scheduleSave = () => {
+  clearTimeout(saveTimer);
+  setAutosave("Đang chờ lưu...", "saving");
+  setStatus(editorStatus, "Đang chờ tự lưu...");
+  saveTimer = setTimeout(() => saveContent(), 900);
+};
+
 const showEditor = () => {
   loginPanel.hidden = true;
   editorPanel.hidden = false;
@@ -316,8 +367,15 @@ loginForm.addEventListener("submit", async (event) => {
     await loadContent();
     showEditor();
     setStatus(editorStatus, "Đã tải nội dung website.", "ok");
+    setAutosave("Tự lưu đang bật", "ok");
   } catch (error) {
     setStatus(loginStatus, error.message, "error");
+  }
+});
+
+contentForm.addEventListener("input", (event) => {
+  if (event.target.matches("[data-path]")) {
+    scheduleSave();
   }
 });
 
@@ -332,6 +390,7 @@ contentForm.addEventListener("click", (event) => {
     list.push({ ...repeater.empty });
     setValue(currentContent, addPath, list);
     renderForm();
+    saveContent();
   }
 
   if (removePath) {
@@ -340,40 +399,16 @@ contentForm.addEventListener("click", (event) => {
     list.splice(Number(event.target.dataset.index), 1);
     setValue(currentContent, removePath, list);
     renderForm();
-  }
-});
-
-saveButton.addEventListener("click", async () => {
-  setStatus(editorStatus, "Đang lưu...");
-
-  try {
-    syncFormToContent();
-    const token = localStorage.getItem(tokenKey);
-    const response = await fetch("/api/content", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(currentContent)
-    });
-    const payload = await response.json();
-
-    if (!response.ok) {
-      throw new Error(payload.error || "Không lưu được nội dung.");
-    }
-
-    renderForm();
-    setStatus(editorStatus, "Đã lưu. Tải lại website để xem nội dung mới.", "ok");
-  } catch (error) {
-    setStatus(editorStatus, `Lỗi: ${error.message}`, "error");
+    saveContent();
   }
 });
 
 reloadButton.addEventListener("click", async () => {
   try {
+    clearTimeout(saveTimer);
     await loadContent();
     setStatus(editorStatus, "Đã tải lại nội dung mới nhất.", "ok");
+    setAutosave("Tự lưu đang bật", "ok");
   } catch (error) {
     setStatus(editorStatus, error.message, "error");
   }
@@ -384,6 +419,7 @@ applyJsonButton.addEventListener("click", () => {
     currentContent = JSON.parse(editor.value);
     renderForm();
     setStatus(editorStatus, "Đã áp dụng JSON vào form.", "ok");
+    saveContent();
   } catch (error) {
     setStatus(editorStatus, "JSON đang sai dấu ngoặc hoặc dấu phẩy.", "error");
   }
@@ -402,6 +438,7 @@ const boot = async () => {
   try {
     await loadContent();
     showEditor();
+    setAutosave("Tự lưu đang bật", "ok");
   } catch (error) {
     localStorage.removeItem(tokenKey);
     showLogin();
