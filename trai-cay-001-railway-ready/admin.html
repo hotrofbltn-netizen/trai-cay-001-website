@@ -39,7 +39,122 @@
           <button class="btn btn-outline" id="logout" type="button">Đăng xuất</button>
         </div>
 
-        <form class="content-form" id="contentForm"></form>
+        <form class="content-form" id="contentForm">
+          <details class="admin-card" open>
+            <summary>Thông tin chung</summary>
+            <div class="form-grid">
+              <label><span>Tên công ty</span><input data-path="site.company" type="text"></label>
+              <label><span>Tên thương hiệu</span><input data-path="site.brand" type="text"></label>
+              <label><span>Dòng mô tả logo</span><input data-path="site.tagline" type="text"></label>
+              <label><span>Email</span><input data-path="site.email" type="text"></label>
+              <label><span>Số điện thoại hiển thị</span><input data-path="site.phone" type="text"></label>
+              <label><span>Số điện thoại để bấm gọi</span><input data-path="site.phoneRaw" type="text"></label>
+              <label><span>Hotline</span><input data-path="site.hotline" type="text"></label>
+              <label><span>Địa chỉ</span><textarea data-path="site.address"></textarea></label>
+              <label><span>Mô tả chân trang</span><textarea data-path="footer.description"></textarea></label>
+              <label><span>Sản phẩm chân trang, mỗi dòng 1 mục</span><textarea data-path="footer.products" data-type="lines"></textarea></label>
+            </div>
+          </details>
+
+          <details class="admin-card" open>
+            <summary>Trang đầu</summary>
+            <div class="form-grid">
+              <label><span>Dòng nhỏ màu cam</span><input data-path="hero.kicker" type="text"></label>
+              <label><span>Tiêu đề lớn</span><input data-path="hero.title" type="text"></label>
+              <label><span>Đoạn giới thiệu</span><textarea data-path="hero.body"></textarea></label>
+              <label><span>Các nhãn cam kết, mỗi dòng 1 nhãn</span><textarea data-path="hero.trust" data-type="lines"></textarea></label>
+              <label><span>Số trong thẻ nổi</span><input data-path="hero.badgeValue" data-type="number" type="number"></label>
+              <label><span>Đơn vị sau số</span><input data-path="hero.badgeSuffix" type="text"></label>
+              <label><span>Chữ dưới số</span><input data-path="hero.badgeLabel" type="text"></label>
+            </div>
+          </details>
+
+          <details class="admin-card" open>
+            <summary>Câu chuyện thương hiệu</summary>
+            <div class="form-grid">
+              <label><span>Dòng nhỏ</span><input data-path="about.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="about.title" type="text"></label>
+              <label><span>Nội dung</span><textarea data-path="about.body"></textarea></label>
+              <label><span>Tiêu đề thẻ nổi</span><input data-path="about.cardTitle" type="text"></label>
+              <label><span>Nội dung thẻ nổi</span><input data-path="about.cardText" type="text"></label>
+              <label><span>Các ý nổi bật, mỗi dòng 1 ý</span><textarea data-path="about.checks" data-type="lines"></textarea></label>
+            </div>
+          </details>
+
+          <details class="admin-card" open>
+            <summary>Nhà xưởng</summary>
+            <div class="form-grid">
+              <label><span>Dòng nhỏ</span><input data-path="factory.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="factory.title" type="text"></label>
+              <label><span>Nội dung</span><textarea data-path="factory.body"></textarea></label>
+            </div>
+          </details>
+
+          <details class="admin-card">
+            <summary>Sản phẩm</summary>
+            <div class="repeat-area" data-list="products.items"></div>
+            <button class="small-btn" type="button" data-add="products.items">+ Thêm sản phẩm</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Số liệu nổi bật</summary>
+            <div class="repeat-area" data-list="stats"></div>
+            <button class="small-btn" type="button" data-add="stats">+ Thêm số liệu</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Giá trị cốt lõi</summary>
+            <div class="repeat-area" data-list="values.items"></div>
+            <button class="small-btn" type="button" data-add="values.items">+ Thêm giá trị</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Thông tin nhà xưởng</summary>
+            <div class="repeat-area" data-list="factory.items"></div>
+            <button class="small-btn" type="button" data-add="factory.items">+ Thêm thông tin</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Quy trình</summary>
+            <div class="form-grid compact-fields">
+              <label><span>Dòng nhỏ</span><input data-path="process.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="process.title" type="text"></label>
+            </div>
+            <div class="repeat-area" data-list="process.items"></div>
+            <button class="small-btn" type="button" data-add="process.items">+ Thêm bước</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Thị trường</summary>
+            <div class="form-grid compact-fields">
+              <label><span>Dòng nhỏ</span><input data-path="market.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="market.title" type="text"></label>
+            </div>
+            <div class="repeat-area" data-list="market.items"></div>
+            <button class="small-btn" type="button" data-add="market.items">+ Thêm thị trường</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Tin tức</summary>
+            <div class="form-grid compact-fields">
+              <label><span>Dòng nhỏ</span><input data-path="news.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="news.title" type="text"></label>
+              <label><span>Chữ link bên phải</span><input data-path="news.linkText" type="text"></label>
+            </div>
+            <div class="repeat-area" data-list="news.items"></div>
+            <button class="small-btn" type="button" data-add="news.items">+ Thêm tin tức</button>
+          </details>
+
+          <details class="admin-card">
+            <summary>Khối tư vấn</summary>
+            <div class="form-grid">
+              <label><span>Dòng nhỏ</span><input data-path="consult.kicker" type="text"></label>
+              <label><span>Tiêu đề</span><input data-path="consult.title" type="text"></label>
+              <label><span>Nội dung</span><textarea data-path="consult.body"></textarea></label>
+              <label><span>Chữ nút gọi</span><input data-path="consult.button" type="text"></label>
+            </div>
+          </details>
+        </form>
 
         <details class="advanced-json">
           <summary>JSON nâng cao</summary>

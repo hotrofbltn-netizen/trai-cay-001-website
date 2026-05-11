@@ -16,90 +16,8 @@ let currentContent = {};
 let saveTimer;
 let isSaving = false;
 
-const sections = [
-  {
-    title: "Thông tin chung",
-    fields: [
-      ["site.company", "Tên công ty"],
-      ["site.brand", "Tên thương hiệu"],
-      ["site.tagline", "Dòng mô tả logo"],
-      ["site.email", "Email"],
-      ["site.phone", "Số điện thoại hiển thị"],
-      ["site.phoneRaw", "Số điện thoại để bấm gọi"],
-      ["site.hotline", "Hotline"],
-      ["site.address", "Địa chỉ", "textarea"],
-      ["footer.description", "Mô tả chân trang", "textarea"],
-      ["footer.products", "Danh sách sản phẩm chân trang, mỗi dòng 1 mục", "lines"]
-    ]
-  },
-  {
-    title: "Trang đầu",
-    fields: [
-      ["hero.kicker", "Dòng nhỏ màu cam"],
-      ["hero.title", "Tiêu đề lớn"],
-      ["hero.body", "Đoạn giới thiệu", "textarea"],
-      ["hero.trust", "Các nhãn cam kết, mỗi dòng 1 nhãn", "lines"],
-      ["hero.badgeValue", "Số trong thẻ nổi", "number"],
-      ["hero.badgeSuffix", "Đơn vị sau số"],
-      ["hero.badgeLabel", "Chữ dưới số"]
-    ]
-  },
-  {
-    title: "Câu chuyện thương hiệu",
-    fields: [
-      ["about.kicker", "Dòng nhỏ"],
-      ["about.title", "Tiêu đề"],
-      ["about.body", "Nội dung", "textarea"],
-      ["about.cardTitle", "Tiêu đề thẻ nổi"],
-      ["about.cardText", "Nội dung thẻ nổi"],
-      ["about.checks", "Các ý nổi bật, mỗi dòng 1 ý", "lines"]
-    ]
-  },
-  {
-    title: "Nhà xưởng",
-    fields: [
-      ["factory.kicker", "Dòng nhỏ"],
-      ["factory.title", "Tiêu đề"],
-      ["factory.body", "Nội dung", "textarea"]
-    ]
-  },
-  {
-    title: "Quy trình",
-    fields: [
-      ["process.kicker", "Dòng nhỏ"],
-      ["process.title", "Tiêu đề"]
-    ]
-  },
-  {
-    title: "Thị trường",
-    fields: [
-      ["market.kicker", "Dòng nhỏ"],
-      ["market.title", "Tiêu đề"]
-    ]
-  },
-  {
-    title: "Tin tức",
-    fields: [
-      ["news.kicker", "Dòng nhỏ"],
-      ["news.title", "Tiêu đề"],
-      ["news.linkText", "Chữ link bên phải"]
-    ]
-  },
-  {
-    title: "Khối tư vấn",
-    fields: [
-      ["consult.kicker", "Dòng nhỏ"],
-      ["consult.title", "Tiêu đề"],
-      ["consult.body", "Nội dung", "textarea"],
-      ["consult.button", "Chữ nút gọi"]
-    ]
-  }
-];
-
-const repeaters = [
-  {
-    path: "stats",
-    title: "Số liệu nổi bật",
+const repeaters = {
+  stats: {
     fields: [
       ["value", "Số", "number"],
       ["suffix", "Đơn vị"],
@@ -107,9 +25,7 @@ const repeaters = [
     ],
     empty: { value: 0, suffix: "", label: "Nội dung mới" }
   },
-  {
-    path: "values.items",
-    title: "Giá trị cốt lõi",
+  "values.items": {
     fields: [
       ["icon", "Số thứ tự"],
       ["title", "Tiêu đề"],
@@ -117,9 +33,7 @@ const repeaters = [
     ],
     empty: { icon: "01", title: "Tiêu đề mới", text: "Nội dung mới" }
   },
-  {
-    path: "products.items",
-    title: "Sản phẩm",
+  "products.items": {
     fields: [
       ["image", "Đường dẫn ảnh"],
       ["alt", "Mô tả ảnh"],
@@ -129,18 +43,14 @@ const repeaters = [
     ],
     empty: { image: "assets/profile-page-01.jpg", alt: "Sản phẩm", category: "Sản phẩm", title: "Sản phẩm mới", text: "Mô tả sản phẩm." }
   },
-  {
-    path: "factory.items",
-    title: "Thông tin trong khối nhà xưởng",
+  "factory.items": {
     fields: [
       ["title", "Dòng lớn"],
       ["text", "Dòng nhỏ"]
     ],
     empty: { title: "Thông tin mới", text: "Mô tả mới" }
   },
-  {
-    path: "process.items",
-    title: "Các bước quy trình",
+  "process.items": {
     fields: [
       ["step", "Số bước"],
       ["title", "Tiêu đề"],
@@ -148,18 +58,14 @@ const repeaters = [
     ],
     empty: { step: "01", title: "Bước mới", text: "Nội dung bước mới." }
   },
-  {
-    path: "market.items",
-    title: "Thị trường xuất khẩu",
+  "market.items": {
     fields: [
       ["title", "Tiêu đề"],
       ["text", "Nội dung", "textarea"]
     ],
     empty: { title: "Thị trường mới", text: "Nội dung mới." }
   },
-  {
-    path: "news.items",
-    title: "Tin tức & hoạt động",
+  "news.items": {
     fields: [
       ["image", "Đường dẫn ảnh"],
       ["alt", "Mô tả ảnh"],
@@ -169,27 +75,22 @@ const repeaters = [
     ],
     empty: { image: "assets/profile-page-20.jpg", alt: "Tin tức", category: "Tin tức", title: "Tin mới", text: "Nội dung tin." }
   }
-];
+};
 
 const setStatus = (element, message, type = "") => {
+  if (!element) return;
   element.textContent = message;
   element.classList.toggle("is-error", type === "error");
   element.classList.toggle("is-ok", type === "ok");
 };
 
 const setAutosave = (message, type = "") => {
+  if (!autosaveState) return;
   autosaveState.textContent = message;
   autosaveState.classList.toggle("is-saving", type === "saving");
   autosaveState.classList.toggle("is-error", type === "error");
   autosaveState.classList.toggle("is-ok", type === "ok");
 };
-
-const escapeHtml = (value) =>
-  String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
 
 const getValue = (object, path) =>
   path.split(".").reduce((value, key) => (value === undefined || value === null ? undefined : value[key]), object);
@@ -207,84 +108,84 @@ const setValue = (object, path, value) => {
 const linesToText = (value) => (Array.isArray(value) ? value.join("\n") : value || "");
 const textToLines = (value) => String(value || "").split("\n").map((line) => line.trim()).filter(Boolean);
 
-const inputMarkup = (path, label, type = "text", value = "") => {
-  const safeValue = type === "lines" ? linesToText(value) : value ?? "";
-  const tag =
-    type === "textarea" || type === "lines"
-      ? `<textarea data-path="${path}" data-type="${type}">${escapeHtml(safeValue)}</textarea>`
-      : `<input data-path="${path}" data-type="${type}" type="${type === "number" ? "number" : "text"}" value="${escapeHtml(safeValue)}">`;
+const bindSimpleFields = () => {
+  contentForm.querySelectorAll("[data-path]").forEach((input) => {
+    const value = getValue(currentContent, input.dataset.path);
+    input.value = input.dataset.type === "lines" ? linesToText(value) : value ?? "";
+  });
+};
 
-  return `<label><span>${escapeHtml(label)}</span>${tag}</label>`;
+const createField = (path, label, type = "text", value = "") => {
+  const field = document.createElement("label");
+  const caption = document.createElement("span");
+  const input = type === "textarea" ? document.createElement("textarea") : document.createElement("input");
+
+  caption.textContent = label;
+  input.dataset.path = path;
+  input.dataset.type = type;
+
+  if (type !== "textarea") input.type = type === "number" ? "number" : "text";
+  input.value = value ?? "";
+
+  field.append(caption, input);
+  return field;
+};
+
+const renderRepeaters = () => {
+  Object.entries(repeaters).forEach(([path, config]) => {
+    const area = document.querySelector(`[data-list="${path}"]`);
+    if (!area) return;
+
+    const items = getValue(currentContent, path) || [];
+    area.innerHTML = "";
+
+    items.forEach((item, index) => {
+      const card = document.createElement("article");
+      card.className = "repeat-item";
+
+      const title = document.createElement("div");
+      title.className = "repeat-title";
+      title.innerHTML = `<strong>Mục ${index + 1}</strong>`;
+
+      const remove = document.createElement("button");
+      remove.className = "danger-btn";
+      remove.type = "button";
+      remove.textContent = "Xóa";
+      remove.dataset.remove = path;
+      remove.dataset.index = String(index);
+      title.append(remove);
+
+      const grid = document.createElement("div");
+      grid.className = "form-grid";
+
+      config.fields.forEach(([key, label, type]) => {
+        grid.append(createField(`${path}.${index}.${key}`, label, type, item[key]));
+      });
+
+      card.append(title, grid);
+      area.append(card);
+    });
+  });
 };
 
 const renderForm = () => {
-  const simpleSections = sections
-    .map(
-      (section) => `
-        <section class="admin-card">
-          <h2>${escapeHtml(section.title)}</h2>
-          <div class="form-grid">
-            ${section.fields.map(([path, label, type]) => inputMarkup(path, label, type, getValue(currentContent, path))).join("")}
-          </div>
-        </section>
-      `
-    )
-    .join("");
-
-  const repeaterSections = repeaters
-    .map((repeater) => {
-      const items = getValue(currentContent, repeater.path) || [];
-
-      return `
-        <section class="admin-card" data-repeater="${repeater.path}">
-          <div class="card-title-row">
-            <h2>${escapeHtml(repeater.title)}</h2>
-            <button class="small-btn" type="button" data-add="${repeater.path}">+ Thêm</button>
-          </div>
-          <div class="repeat-list">
-            ${items
-              .map(
-                (item, index) => `
-                  <article class="repeat-item" data-index="${index}">
-                    <div class="repeat-title">
-                      <strong>Mục ${index + 1}</strong>
-                      <button class="danger-btn" type="button" data-remove="${repeater.path}" data-index="${index}">Xóa</button>
-                    </div>
-                    <div class="form-grid">
-                      ${repeater.fields
-                        .map(([key, label, type]) => inputMarkup(`${repeater.path}.${index}.${key}`, label, type, item[key]))
-                        .join("")}
-                    </div>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        </section>
-      `;
-    })
-    .join("");
-
-  contentForm.innerHTML = `${simpleSections}${repeaterSections}`;
+  bindSimpleFields();
+  renderRepeaters();
   editor.value = JSON.stringify(currentContent, null, 2);
 };
 
 const syncFormToContent = () => {
   contentForm.querySelectorAll("[data-path]").forEach((input) => {
-    const path = input.dataset.path;
-    const type = input.dataset.type;
     let value = input.value;
-
-    if (type === "number") value = Number(value || 0);
-    if (type === "lines") value = textToLines(value);
-
-    setValue(currentContent, path, value);
+    if (input.dataset.type === "number") value = Number(value || 0);
+    if (input.dataset.type === "lines") value = textToLines(value);
+    setValue(currentContent, input.dataset.path, value);
   });
 
   editor.value = JSON.stringify(currentContent, null, 2);
 };
 
-const saveContent = async ({ rerender = false } = {}) => {
+const saveContent = async () => {
   if (isSaving) return;
 
   isSaving = true;
@@ -304,11 +205,8 @@ const saveContent = async ({ rerender = false } = {}) => {
     });
     const payload = await response.json();
 
-    if (!response.ok) {
-      throw new Error(payload.error || "Không lưu được nội dung.");
-    }
+    if (!response.ok) throw new Error(payload.error || "Không lưu được nội dung.");
 
-    if (rerender) renderForm();
     setAutosave("Đã tự lưu", "ok");
     setStatus(editorStatus, "Đã tự lưu. Tải lại website để xem nội dung mới.", "ok");
   } catch (error) {
@@ -323,7 +221,7 @@ const scheduleSave = () => {
   clearTimeout(saveTimer);
   setAutosave("Đang chờ lưu...", "saving");
   setStatus(editorStatus, "Đang chờ tự lưu...");
-  saveTimer = setTimeout(() => saveContent(), 900);
+  saveTimer = setTimeout(saveContent, 900);
 };
 
 const showEditor = () => {
@@ -351,10 +249,7 @@ const login = async (password) => {
   });
   const payload = await response.json();
 
-  if (!response.ok) {
-    throw new Error(payload.error || "Đăng nhập thất bại.");
-  }
-
+  if (!response.ok) throw new Error(payload.error || "Đăng nhập thất bại.");
   localStorage.setItem(tokenKey, payload.token);
 };
 
@@ -374,9 +269,7 @@ loginForm.addEventListener("submit", async (event) => {
 });
 
 contentForm.addEventListener("input", (event) => {
-  if (event.target.matches("[data-path]")) {
-    scheduleSave();
-  }
+  if (event.target.matches("[data-path]")) scheduleSave();
 });
 
 contentForm.addEventListener("click", (event) => {
@@ -385,9 +278,8 @@ contentForm.addEventListener("click", (event) => {
 
   if (addPath) {
     syncFormToContent();
-    const repeater = repeaters.find((item) => item.path === addPath);
     const list = getValue(currentContent, addPath) || [];
-    list.push({ ...repeater.empty });
+    list.push({ ...repeaters[addPath].empty });
     setValue(currentContent, addPath, list);
     renderForm();
     saveContent();

@@ -145,10 +145,16 @@
   background: #ffffff;
 }
 
-.admin-card h2 {
+.admin-card summary {
   margin: 0;
   color: var(--green);
   font-size: clamp(1.25rem, 1.7vw, 1.7rem);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-card[open] summary {
+  margin-bottom: 4px;
 }
 
 .card-title-row,
@@ -212,6 +218,15 @@
 .repeat-list {
   display: grid;
   gap: 10px;
+}
+
+.repeat-area {
+  display: grid;
+  gap: 10px;
+}
+
+.compact-fields {
+  margin-bottom: 12px;
 }
 
 .repeat-item {
