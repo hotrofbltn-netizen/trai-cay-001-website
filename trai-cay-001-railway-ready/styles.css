@@ -474,7 +474,7 @@ p {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   padding: 0 clamp(20px, 6vw, 88px);
   background: var(--green);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -757,7 +757,7 @@ p {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 22px;
 }
 
@@ -1289,6 +1289,10 @@ p {
   .standard,
   .footer {
     grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .hero-media,
